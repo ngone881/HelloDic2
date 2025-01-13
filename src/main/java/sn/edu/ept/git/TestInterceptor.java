@@ -24,7 +24,6 @@ public class TestInterceptor {
                 .nom("touba")
                 .prenom("Ali")
                 .build();
-//        System.out.println("####" + toubaCarte.getDateCreation);
 
         Carte toubaCarte = Carte.builder()
                         .code("ddk")
@@ -32,14 +31,14 @@ public class TestInterceptor {
                         .dateDebut(new GregorianCalendar(2024, Calendar.OCTOBER, 1).getTime())
                         .dateFin(new GregorianCalendar(2025, Calendar.DECEMBER, 8).getTime())
                         .build();
+        System.out.println("####" + toubaCarte.getDateCreation());
 
         em.getTransaction().begin();
-        em.persist(touba);
-//        System.out.println("####" + toubaCarte.getDateCreation); à revoir
-
+//        em.persist(touba);
         em.persist(toubaCarte);
-        em.getTransaction().commit();
+        System.out.println("####" + toubaCarte.getDateCreation());
 
+        em.getTransaction().commit();
         em.close();
         emf.close();
 
