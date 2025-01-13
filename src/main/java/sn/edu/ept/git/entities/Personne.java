@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity
 public class Personne {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY ) //généré automatiquement par la base de données
     private Integer id;
 
     @Column(length = 100, nullable = false)

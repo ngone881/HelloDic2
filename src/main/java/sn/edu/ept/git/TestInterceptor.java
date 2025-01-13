@@ -25,14 +25,12 @@ public class TestInterceptor {
                 .prenom("Ali")
                 .build();
 
-
         Carte toubaCarte = Carte.builder()
                         .code("ddk")
                         .etudiant(touba)
                         .dateDebut(new GregorianCalendar(2024, Calendar.OCTOBER, 1).getTime())
                         .dateFin(new GregorianCalendar(2025, Calendar.DECEMBER, 8).getTime())
                         .build();
-
         System.out.println("####" + toubaCarte.getDateCreation()); //null car l'intercepteur @PrePersist n'a pas encore été appelé
 
         em.getTransaction().begin();
@@ -43,7 +41,5 @@ public class TestInterceptor {
         em.getTransaction().commit();
         em.close();
         emf.close();
-
-
     }
 }
