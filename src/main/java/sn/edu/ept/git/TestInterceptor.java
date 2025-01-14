@@ -42,13 +42,23 @@ public class TestInterceptor {
         em.persist(toubaCarte);
         System.out.println("####" + toubaCarte.getDateCreation()); //L'intercepteur @PrePersist a été déclenché au moment de la persistance
 
-//        Personne p = Personne.builder()
-//                        .adresse("Pikine")
-//                        .nom("Fall")
-//                        .prenom("Touba")
-//                        .build();
-//
-//        em.persist(p);
+        Personne p = Personne.builder()
+                        .adresse("Pikine")
+                        .nom("Fall")
+                        .prenom("Touba")
+                        .build();
+
+        Etudiant lamine = Etudiant.builder()
+                        .nom("Ndiaye")
+                        .prenom("Lamine")
+                        .numeroChambre(25)
+                        .pavillon("H4")
+                        .voisin(touba)
+                        .build();
+        em.persist(lamine);
+        touba.setVoisin(lamine);
+        em.merge(touba);
+        em.persist(p);
 
         em.getTransaction().commit();
         em.close();

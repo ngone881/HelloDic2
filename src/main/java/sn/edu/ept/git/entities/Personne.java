@@ -14,14 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "ROLE")
 @DiscriminatorValue("EMPLOYE")
 public class Personne {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY ) //généré automatiquement par la base de données
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
@@ -41,5 +40,4 @@ public class Personne {
 
     @ManyToMany
     private List<Pays> nationalites;
-
 }

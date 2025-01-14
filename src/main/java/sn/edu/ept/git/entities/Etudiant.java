@@ -1,21 +1,20 @@
 package sn.edu.ept.git.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder //gère l'héritage alorsque Builder ne gère pas l'héritage
+@SuperBuilder
 @Entity
-@DiscriminatorValue("ELEVE-INGENIEUR")
-public class Etudiant extends Personne {
+@DiscriminatorValue("ELEVE-INGENIEUR") //inutile dans ce type d'héritage
+public class Etudiant extends Personne{
 
     @OneToOne(mappedBy = "etudiant")
     private Carte carte;
