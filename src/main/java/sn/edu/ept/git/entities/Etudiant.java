@@ -5,37 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder //gère l'héritage alorsque Builder ne gère pas l'héritage
 @Entity
-public class Etudiant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //autoIncrement
-    private Integer id;
-
-    @Column(nullable = false)
-    private String nom;
-
-    @Column(nullable = false)
-    private String prenom;
-
-    private String telephone;
-
-    private String adresse;
+@DiscriminatorValue("ELEVE-INGENIEUR")
+public class Etudiant extends Personne {
 
     @OneToOne(mappedBy = "etudiant")
     private Carte carte;
 
-    @ManyToOne
-    private Pays paysNaissance;
+    @OneToOne
+    private Etudiant voisin;
 
-    @ManyToMany
-    private List<Pays> nationalites;
+    private Integer numeroChambre;
+
+    @Column(nullable = false)
+    private String pavillon;
 }
 
 
