@@ -13,8 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@DiscriminatorValue("ELEVE-INGENIEUR") //inutile dans ce type d'héritage
-public class Etudiant extends Personne{
+@DiscriminatorValue("ELEVE-INGENIEUR")
+
+public class Etudiant extends Personne {
 
     @OneToOne(mappedBy = "etudiant")
     private Carte carte;
@@ -23,9 +24,8 @@ public class Etudiant extends Personne{
     private Etudiant voisin;
 
     private Integer numeroChambre;
-
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String pavillon;
-}
 
+}
 

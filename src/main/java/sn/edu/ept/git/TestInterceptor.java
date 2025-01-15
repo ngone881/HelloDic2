@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import sn.edu.ept.git.entities.Carte;
+import sn.edu.ept.git.entities.Enseignant;
 import sn.edu.ept.git.entities.Etudiant;
 import sn.edu.ept.git.entities.Personne;
 
@@ -42,19 +43,20 @@ public class TestInterceptor {
         em.persist(toubaCarte);
         System.out.println("####" + toubaCarte.getDateCreation()); //L'intercepteur @PrePersist a été déclenché au moment de la persistance
 
-        Personne p = Personne.builder()
-                        .adresse("Pikine")
-                        .nom("Fall")
-                        .prenom("Touba")
-                        .build();
+        Enseignant p = Enseignant.builder()
+                .adresse("Pikine")
+                .nom("Fall")
+                .prenom("Touba")
+                .build();
 
         Etudiant lamine = Etudiant.builder()
-                        .nom("Ndiaye")
-                        .prenom("Lamine")
-                        .numeroChambre(25)
-                        .pavillon("H4")
-                        .voisin(touba)
-                        .build();
+                .nom("Ndiaye")
+                .prenom("Lamine")
+                .numeroChambre(25)
+                .pavillon("H4")
+                .voisin(touba)
+                .build();
+
         em.persist(lamine);
         touba.setVoisin(lamine);
         em.merge(touba);

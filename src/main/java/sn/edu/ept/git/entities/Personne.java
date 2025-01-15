@@ -14,8 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+
+@MappedSuperclass//L'annotation @MappedSuperclass permet de définir une classe parent dont les champs et annotations seront hérités par ses sous-classes persistentes, sans créer de table distincte pour elle dans la base de données
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "ROLE")
 @DiscriminatorValue("EMPLOYE")
 public class Personne {
@@ -28,8 +29,6 @@ public class Personne {
 
     @Column(nullable = false)
     private String prenom;
-
-    private String telephone;
 
     private String adresse;
 
