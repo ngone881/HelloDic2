@@ -16,6 +16,7 @@
         <class>sn.edu.ept.git.entities.Departement</class>
         <class>sn.edu.ept.git.entities.Filiere</class>
         <class>sn.edu.ept.git.entities.Pays</class>
+        <class>sn.edu.ept.git.entities.Enseignant</class>
         <!-- EclipseLink Properties -->
         <properties>
             <!-- JDBC Configuration -->

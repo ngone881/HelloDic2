@@ -11,6 +11,5 @@ public class Telephone {
     private String number;
     private String operateur;
 
-    @ManyToOne
-    private Personne proprietaire;
+    //sa ret lation avec Personne est supprimée car celle-ci a maintenant cette annotation : MappedSuperclass
 }
